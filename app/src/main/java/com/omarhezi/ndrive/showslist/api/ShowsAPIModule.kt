@@ -1,4 +1,4 @@
-package com.omarhezi.ndrive.api
+package com.omarhezi.ndrive.showslist.api
 
 import dagger.Module
 import dagger.Provides
@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
@@ -34,6 +35,7 @@ object ShowsAPIModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .addConverterFactory(MoshiConverterFactory.create())
         .baseUrl(BASE_URL)
         .client(okHttpClient)
