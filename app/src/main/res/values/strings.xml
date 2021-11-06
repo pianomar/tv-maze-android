@@ -2,4 +2,5 @@
     <string name="app_name">NDrive</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_shows_hint">Search for a show by name</string>
 </resources>
