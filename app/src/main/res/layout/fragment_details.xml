@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+
+        android:paddingBottom="@dimen/standard_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/show_poster_details_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/show_title_details_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/standard_margin"
+                android:layout_marginTop="@dimen/half_margin"
+                android:textSize="@dimen/title_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/show_poster_details_img" />
+
+            <TextView
+                android:id="@+id/show_summary_details_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:textSize="@dimen/summary_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/show_title_details_txt"
+                app:layout_constraintTop_toBottomOf="@+id/show_title_details_txt" />
+
+            <TextView
+                android:id="@+id/rating_title"
+                style="@style/DetailsTitle"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:text="@string/rating_title"
+                app:layout_constraintStart_toStartOf="@+id/show_summary_details_txt"
+                app:layout_constraintTop_toBottomOf="@+id/show_summary_details_txt" />
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/show_rating_bar"
+                style="@style/Widget.MaterialRatingBar.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:numStars="10"
+                android:progressTint="@color/rating_color"
+                android:rating="6.5"
+                android:secondaryProgressTint="@color/rating_color"
+                app:layout_constraintStart_toStartOf="@+id/show_summary_details_txt"
+                app:layout_constraintTop_toBottomOf="@+id/rating_title" />
+
+            <TextView
+                android:id="@+id/unavailable_rating_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_margin"
+                android:text="@string/rating_unavailable"
+                android:textSize="@dimen/summary_text_size"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@+id/show_summary_details_txt"
+                app:layout_constraintTop_toBottomOf="@+id/rating_title" />
+
+            <TextView
+                android:id="@+id/aliases_title"
+                style="@style/DetailsTitle"
+                android:layout_marginTop="@dimen/standard_margin"
+                android:text="@string/aliaases_title"
+                app:layout_constraintStart_toStartOf="@+id/show_summary_details_txt"
+                app:layout_constraintTop_toBottomOf="@+id/unavailable_rating_txt" />
+
+            <TextView
+                android:id="@+id/aliases_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/half_margin"
+                android:textSize="@dimen/summary_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/show_summary_details_txt"
+                app:layout_constraintTop_toBottomOf="@+id/aliases_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

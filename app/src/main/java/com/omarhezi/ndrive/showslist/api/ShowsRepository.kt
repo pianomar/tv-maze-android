@@ -12,4 +12,12 @@ class ShowsRepository(private val apiService: ShowsAPI) {
             }
         }
     }
+
+    fun getShowAliasesById(id: Int): Single<List<String?>> {
+        return apiService.getShowAliasesById(id.toString()).map { aliasesResponse ->
+            aliasesResponse.map {
+                it.name
+            }
+        }
+    }
 }

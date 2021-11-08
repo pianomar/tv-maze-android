@@ -4,4 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_shows_hint">Search for a show by name</string>
     <string name="generic_error">Something went wrong</string>
+    <string name="rating_unavailable">Rating unavailable</string>
+    <string name="aliases_error">Something went wrong retreiving aliases</string>
+    <string name="aliaases_title">Aliases:</string>
+    <string name="rating_title">Rating:</string>
 </resources>
