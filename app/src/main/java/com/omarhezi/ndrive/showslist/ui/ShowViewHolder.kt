@@ -7,7 +7,7 @@ import com.omarhezi.ndrive.R
 import com.omarhezi.ndrive.databinding.ShowListitemLayoutBinding
 import com.omarhezi.ndrive.showslist.core.modules.ShowViewData
 
-class ShowViewHolder(private val binding: ShowListitemLayoutBinding, private val listener: ShowSelectListener) :
+class ShowViewHolder(private val binding: ShowListitemLayoutBinding, private val listener: ShowSelectListener?) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(show: ShowViewData) {
@@ -21,7 +21,7 @@ class ShowViewHolder(private val binding: ShowListitemLayoutBinding, private val
             .into(binding.showPosterImg)
 
         binding.root.setOnClickListener {
-            listener.onSelected(show)
+            listener?.onSelected(show)
         }
     }
 }

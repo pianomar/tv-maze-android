@@ -21,6 +21,11 @@ class MainFragment : Fragment() {
 
     private val viewModel: ShowsListViewModel by viewModels()
     private lateinit var binding: FragmentMainBinding
+    private lateinit var adapter: ShowsAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +35,7 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.searchBox.setOnEditorActionListener { _, _, _ ->
+            binding.showsListProgress.visibility = View.VISIBLE
             viewModel.getShowsListByQuery(binding.searchBox.text.toString())
             binding.searchBox.setText("")
             true
@@ -41,21 +47,31 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ShowsAdapter {
-            findNavController().navigate(R.id.action_details_fragment, bundleOf(ShowDetailsFragment.SHOW to it))
+        adapter = ShowsAdapter {
+            findNavController().navigate(
+                R.id.action_details_fragment,
+                bundleOf(ShowDetailsFragment.SHOW to it)
+            )
         }
 
-        binding.showsList.adapter = adapter
-
         viewModel.showsLiveData.observe(viewLifecycleOwner) { result ->
+            binding.showsListProgress.visibility = View.GONE
+
             when (result) {
                 is ShowsListViewModel.ShowsListStatus.Success -> {
-                    if (result.data.isNotEmpty()) {
-                        adapter.items = result.data
-                        adapter.notifyDataSetChanged()
+                    binding.showsList.adapter = adapter
+                    adapter.items = result.data
+                    adapter.notifyDataSetChanged()
+                }
+                is ShowsListViewModel.ShowsListStatus.Error -> {
+                    if (result.message != null) {
+                        Snackbar.make(
+                            view,
+                            result.message,
+                            Snackbar.LENGTH_LONG
+                        ).show()
                     }
                 }
-                is ShowsListViewModel.ShowsListStatus.Error -> Snackbar.make(view, result.message, Snackbar.LENGTH_LONG).show()
             }
         }
     }
