@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NDrive</string>
+    <string name="search_shows_hint">Search for a show by name</string>
+    <string name="generic_error">Something went wrong</string>
+    <string name="not_found_error">Couldn\'t find shows matching your search</string>
+    <string name="rating_unavailable">Rating unavailable</string>
+    <string name="aliases_error">Something went wrong retrieving aliases</string>
+    <string name="aliaases_title">Aliases:</string>
+    <string name="rating_title">Rating:</string>
+</resources>
